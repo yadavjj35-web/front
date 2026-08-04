@@ -1,8 +1,8 @@
-// auth token persistent helpers
 const TOKEN_KEY = 'waai_jwt';
 const USER_KEY = 'waai_user';
 
 export function setToken(token) {
+  if (!token) return;
   localStorage.setItem(TOKEN_KEY, token);
 }
 
@@ -16,6 +16,7 @@ export function clearAuth() {
 }
 
 export function setUser(user) {
+  if (!user) return;
   localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
