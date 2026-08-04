@@ -12,9 +12,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use((cfg) => {
   const token = getToken();
-  if (token) {
-    cfg.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) cfg.headers.Authorization = `Bearer ${token}`;
   return cfg;
 });
 
@@ -22,9 +20,7 @@ instance.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err?.response?.status === 401) {
-      // unauthorized - clear local auth (JWT invalid/expired)
       clearAuth();
-      // reload to redirect to login
       window.location.href = '/login';
     }
     return Promise.reject(err);
