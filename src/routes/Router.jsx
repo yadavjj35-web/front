@@ -1,7 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from '../components/Layout/Layout';
-import ProtectedRoute from '../components/ProtectedRoute';
 import Login from '../pages/Login';
 import ForgotPassword from '../pages/ForgotPassword';
 import ResetPassword from '../pages/ResetPassword';
@@ -14,13 +12,18 @@ import Orders from '../pages/Orders';
 import Customers from '../pages/Customers';
 import Crm from '../pages/Crm';
 import Analytics from '../pages/Analytics';
-import Approvals from '../pages/OwnerApproval';
+import OwnerApproval from '../pages/OwnerApproval';
 import Logs from '../pages/Logs';
 import Monitoring from '../pages/Monitoring';
 import Settings from '../pages/Settings';
 import Profile from '../pages/Profile';
+import Products from '../pages/Products';
+import ProductDetails from '../pages/ProductDetails';
 import NotFound from '../pages/NotFound';
 import Offline from '../pages/Offline';
+import Error500 from '../pages/Error500';
+import ProtectedRoute from '../components/ProtectedRoute';
+import Layout from '../components/Layout/Layout';
 
 export default function Router() {
   return (
@@ -50,6 +53,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/ai-agents"
         element={
@@ -60,6 +64,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/whatsapp/*"
         element={
@@ -70,6 +75,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/woo"
         element={
@@ -80,6 +86,29 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/products"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Products />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/products/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <ProductDetails />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
       <Route
         path="/orders"
         element={
@@ -90,6 +119,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/customers"
         element={
@@ -100,6 +130,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/crm"
         element={
@@ -110,6 +141,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/analytics"
         element={
@@ -120,16 +152,18 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/approvals"
         element={
           <ProtectedRoute>
             <Layout>
-              <Approvals />
+              <OwnerApproval />
             </Layout>
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/logs"
         element={
@@ -140,6 +174,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/monitoring"
         element={
@@ -150,6 +185,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/settings"
         element={
@@ -160,6 +196,7 @@ export default function Router() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/profile"
         element={
@@ -172,6 +209,7 @@ export default function Router() {
       />
 
       <Route path="/offline" element={<Offline />} />
+      <Route path="/500" element={<Error500 />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
