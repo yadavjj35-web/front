@@ -1,0 +1,13 @@
+/* App-level CSS */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+.mobile-topbar {
+  @apply md:hidden;
+}
+
+.desktop-sidebar {
+  @apply hidden md:flex;
+}
