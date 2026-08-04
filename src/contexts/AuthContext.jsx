@@ -10,7 +10,6 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Optionally fetch profile if token exists
     async function loadProfile() {
       const token = getToken();
       if (!token) return;
