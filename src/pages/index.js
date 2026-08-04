@@ -1,0 +1,17 @@
+export { default as Dashboard } from './Dashboard';
+export { default as AiExecutive } from './AiExecutive';
+export { default as AiAgents } from './AiAgents';
+export { default as WhatsApp } from './WhatsApp';
+export { default as Woo } from './WooCommerce';
+export { default as Orders } from './Orders';
+export { default as Customers } from './Customers';
+export { default as Crm } from './Crm';
+export { default as Analytics } from './Analytics';
+export { default as OwnerApproval } from './OwnerApproval';
+export { default as Logs } from './Logs';
+export { default as Monitoring } from './Monitoring';
+export { default as Settings } from './Settings';
+export { default as Profile } from './Profile';
+export { default as Products } from './Products';
+export { default as ProductDetails } from './ProductDetails';
+export { default as Workflows } from './Workflows';
