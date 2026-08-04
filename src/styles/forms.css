@@ -1,0 +1,9 @@
+.form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.form-label {
+  width: 140px;
+  font-weight: 600;
+}
