@@ -1,0 +1,79 @@
+/* accessibility.css
+   Focus styles, skip links, reduced-motion, high-contrast helpers.
+*/
+
+/* Skip to content link (visible when focused) */
+.skip-to-content {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-to-content:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary, #0ea5a4);
+  color: #fff;
+  border-radius: 6px;
+  z-index: 9999;
+}
+
+/* Visible focus ring (better than outline) */
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(14,165,164,0.12), 0 0 0 1px var(--color-primary, #0ea5a4);
+  border-radius: 6px;
+}
+
+/* Make sure focusable controls are visible and sizeable on touch */
+button, a, input, select, textarea {
+  min-height: 36px;
+}
+
+/* High contrast mode helper (for user agent or forced class) */
+.high-contrast, .hc {
+  background: #000 !important;
+  color: #fff !important;
+}
+.high-contrast a, .hc a { color: #fff; text-decoration: underline; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: none;
+    --motion-default: none;
+  }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Focus ring on keyboard navigation only (using :focus-visible) */
+:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+/* Accessible hidden helper (keeps content for screen readers) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Modal backdrop focus trap helper ensures modal content has role and aria-modal in markup */
+[role="dialog"][aria-modal="true"] { z-index: 9999; }
+
+/* Table responsive: allow scrolling on small screens */
+.table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* High-contrast text variants for better readability */
+.text-high { color: #111827; background: #fff; padding: 0.25rem 0.5rem; border-radius: 4px; }
