@@ -1,0 +1,80 @@
+/* components.css
+   Small component-level styles and cross-component utility classes where Tailwind utilities are insufficient.
+   Use sparingly — prefer Tailwind classes for most styling.
+*/
+
+/* Cards */
+.card {
+  background: var(--color-surface, #fff);
+  border: 1px solid rgba(2,6,23,0.06);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: var(--card-shadow, 0 6px 18px rgba(2,6,23,0.04));
+}
+
+/* Toast animation */
+.toast-enter {
+  transform: translateY(8px);
+  opacity: 0;
+}
+.toast-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms ease-out;
+}
+.toast-exit {
+  opacity: 1;
+}
+.toast-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+}
+
+/* Modal content sizing helpers */
+.modal-lg { width: 900px; max-width: 95vw; }
+.modal-md { width: 640px; max-width: 95vw; }
+.modal-sm { width: 420px; max-width: 95vw; }
+
+/* Chat bubbles */
+.chat-bubble {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 14px;
+  max-width: 75%;
+  word-break: break-word;
+}
+.chat-bubble.in { background: #f1f5f9; color: #0f172a; border-bottom-left-radius: 4px; }
+.chat-bubble.out { background: var(--color-primary, #0ea5a4); color: #fff; border-bottom-right-radius: 4px; }
+
+/* File upload placeholder */
+.upload-placeholder {
+  border: 1px dashed rgba(2,6,23,0.08);
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Small helpers */
+.row { display: flex; align-items: center; gap: 1rem; }
+.col { display: block; }
+.center { display: flex; align-items: center; justify-content: center; }
+
+/* Badge variants */
+.badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; }
+.badge-success { background: #ecfdf5; color: #065f46; }
+.badge-warning { background: #fffbeb; color: #92400e; }
+.badge-danger { background: #fff1f2; color: #9f1239; }
+
+/* Accessible focus for buttons without default outline */
+.btn-focus-visible:focus { box-shadow: 0 0 0 4px rgba(14,165,164,0.12); }
+
+/* Utility: visually hidden but accessible */
+.visually-hidden { position: absolute !important; clip: rect(1px,1px,1px,1px); padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important; overflow: hidden; white-space: nowrap; }
+
+/* Small responsive tweaks */
+@media (max-width: 640px) {
+  .card { padding: 0.75rem; }
+  .modal-lg, .modal-md { width: 95vw; }
+}
