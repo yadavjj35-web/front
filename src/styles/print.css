@@ -1,0 +1,52 @@
+/* print.css
+   Print-focused styles for invoices, reports, and printable views.
+   Link this file in index.html for print media or import in main build.
+*/
+
+/* General page */
+@page {
+  size: auto;
+  margin: 12mm;
+}
+
+@media print {
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    font-size: 12pt;
+    line-height: 1.3;
+  }
+
+  /* Hide non-essential UI */
+  .no-print, header, footer, nav, .sidebar, .topbar, .toast-container, .dev-toolbar { display: none !important; }
+
+  /* Ensure content expands full width */
+  .container, main, .card { width: 100% !important; max-width: 100% !important; box-shadow: none !important; border: none !important; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; }
+  table th, table td { padding: 6px 8px; border: 1px solid #ddd; font-size: 11pt; }
+  thead { background: #f3f4f6 !important; -webkit-print-color-adjust: exact; }
+
+  /* Images: ensure they print */
+  img { max-width: 100% !important; height: auto !important; }
+
+  /* Break long sections */
+  .page-break { page-break-before: always; }
+  .avoid-break { page-break-inside: avoid; }
+
+  /* Invoice heading styles */
+  .invoice-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .invoice-meta { text-align: right; font-size: 10pt; color: #333; }
+
+  /* Keep small signature area at bottom */
+  .signature { margin-top: 2rem; display: flex; gap: 1rem; }
+  .signature .sig-box { border-top: 1px solid #000; width: 40%; padding-top: 0.5rem; text-align: center; font-size: 10pt; }
+
+  /* Force body font for readability */
+  body, p, div, span, td, th { font-family: "Times New Roman", Georgia, serif; color: #111; }
+
+  /* Remove links' urls in print except as footnotes */
+  a[href]:after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+}
